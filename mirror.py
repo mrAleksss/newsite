@@ -1,12 +1,14 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 mirror = Flask(__name__)
-new_women = {'id': 1, 'name': 'Kristina'}
 
 
-@mirror.route('/', methods=['POST'])
-def example():
-    return {'success': True, 'new_women': request.json}
+@mirror.route('/', methods=['GET', 'POST'])
+def echo():
+    data = request.get_json()
+    return jsonify({"result": "Success!", 'data': data})
 
 
-print(new_women)
+
+if __name__ == "__main__":
+    mirror.run(debug=True)

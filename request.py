@@ -1,4 +1,5 @@
 import requests
 
-new_women = {'id': 1, 'name': 'Kristina'}
-requests.post('http://127.0.0.1:5000/insert', json=new_women).json()
+res = requests.post('http://localhost:5000/api/add_message/1234', json={'name': 'Liza'})
+if res.ok:
+    print(res.json())
